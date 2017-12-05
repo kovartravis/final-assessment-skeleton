@@ -36,6 +36,10 @@ inputholder{
     padding-left: 30px;
 }
 
+.newuser{
+    padding-top: 10px;
+}
+
 .error{
     color: red;
 }

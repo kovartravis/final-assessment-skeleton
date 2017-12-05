@@ -1,0 +1,11 @@
+<div class="card text-center z-depth-2">
+        <div class="card-body">
+            <p class="mb-0">origin: {{flightController.flight.origin}} | destination: {{flightController.flight.destination}} |
+                            leaves: {{flightController.leaves}} | flight time: {{flightController.flight.flightTime}} hour(s)
+            </p>
+            <div class="flightbuttons">
+                <button class="btn-default" ng-click="flightController.clickView()">View</button>
+                <button class="btn-primary" ng-click="flightController.clickBook()">Book</button>
+            </div>
+        </div>
+</div>

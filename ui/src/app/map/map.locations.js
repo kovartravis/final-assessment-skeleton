@@ -12,5 +12,10 @@ export default {
   knoxville: {
     latitude: 35.9606,
     longitude: -83.9207
+  },
+
+  chattanooga:{
+    latitude: 35.0456,
+    longitude:-85.3097
   }
 }

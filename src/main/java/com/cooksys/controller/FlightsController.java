@@ -23,9 +23,9 @@ import com.cooksys.pojo.Flight;
 import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("flights")
-@CrossOrigin
 public class FlightsController {
 	
 	@Autowired
@@ -40,27 +40,27 @@ public class FlightsController {
 		return flightService.getDailyFlightList();
 	}
 	
-	@GetMapping("/booking/{id}")
+	@GetMapping("/booking/get/{id}")
 	public Booking getBookingById(@PathVariable Long id) {
 		return flightService.getBookingById(id);
 	}
 	
-	@GetMapping("booking/passenger/{username}")
-	public List<Flight> getBookingsByUsername(String username){
+	@GetMapping("/booking/passenger/{username}")
+	public List<Booking> getBookingsByUsername(@PathVariable String username){
 		return flightService.getBookingsByUsername(username);
 	}
 	
-	@GetMapping("booking/{origin}/{destination}")
+	@GetMapping("/booking/{origin}/{destination}")
 	public ArrayList<ArrayList<Flight>> getPathsFromTo(@PathVariable String origin, @PathVariable String destination){
 		return flightService.getPathsFromTo(origin, destination);
 	}
 	
-	@GetMapping("booking/{origin}")
+	@GetMapping("/booking/{origin}")
 	public List<Flight> getFlightsFrom(@PathVariable String origin){
 		return flightService.getFlightsFrom(origin);
 	}
 	
-	@GetMapping("booking/any/{destination}")
+	@GetMapping("/booking/any/{destination}")
 	public List<Flight> getFlightsTo(@PathVariable String destination){
 		return flightService.getFlightsTo(destination);
 	}

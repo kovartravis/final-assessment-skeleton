@@ -44,11 +44,11 @@ public class FlightService {
 	private void refreshFlghts() {
 		flightList = generator.generateNewFlightList();
 		
-//		flightList.add(new Flight("MEMPHIS", "NASHVILLE"));
-//		flightList.add(new Flight("MEMPHIS", "KNOXVILLE"));
-//		flightList.add(new Flight("KNOXVILLE", "CHATTANOOGA"));
-//		flightList.add(new Flight("KNOXVILLE", "NASHVILLE"));
-//		flightList.add(new Flight("CHATTANOOGA", "NASHVILLE"));
+//		flightList.add(new Flight("MEMPHIS", "NASHVILLE", 1, 2));
+//		flightList.add(new Flight("MEMPHIS", "KNOXVILLE", 2, 2));
+//		flightList.add(new Flight("KNOXVILLE", "CHATTANOOGA", 1, 5));
+//		flightList.add(new Flight("KNOXVILLE", "NASHVILLE", 4, 2));
+//		flightList.add(new Flight("CHATTANOOGA", "NASHVILLE", 1, 3));
 	}
 
 	public Booking saveBooking(Booking booking) throws SomethingIsNullAndShouldNotBeException,
@@ -62,7 +62,8 @@ public class FlightService {
 		return bookingRepo.findById(id);
 	}
 
-	public List<Flight> getBookingsByUsername(String username) {
+	public List<Booking> getBookingsByUsername(String username) {
+		System.out.println(username);
 		return bookingRepo.findBookingsByLoginUsername(username);
 	}
 
@@ -76,18 +77,24 @@ public class FlightService {
 			}else {
 				for(Flight flightsToMid : flightList.stream().filter( f -> f.getDestination().equals(flightsToDest.getOrigin()) ).collect(Collectors.toList())) {
 					if(flightsToMid.getOrigin().equals(origin)) {
-						ArrayList<Flight> path = new ArrayList<Flight>();
-		                path.add(flightsToMid);
-		                path.add(flightsToDest);
-		                pathSet.add(path);
+						if((flightsToMid.getOffset() + flightsToMid.getFlightTime()) < flightsToDest.getOffset()) {
+							ArrayList<Flight> path = new ArrayList<Flight>();
+			                path.add(flightsToMid);
+			                path.add(flightsToDest);
+			                pathSet.add(path);
+						}
 					}else {
 						for(Flight flightsToStart : flightList.stream().filter( f -> f.getDestination().equals(flightsToMid.getOrigin()) ).collect(Collectors.toList())) {
 							if(flightsToStart.getOrigin().equals(origin)) {
-								ArrayList<Flight> path = new ArrayList<Flight>();
-								path.add(flightsToStart);
-				                path.add(flightsToMid);
-				                path.add(flightsToDest);
-				                pathSet.add(path);
+								if((flightsToMid.getOffset() + flightsToMid.getFlightTime()) < flightsToDest.getOffset()) {
+									if((flightsToStart.getOffset() + flightsToStart.getFlightTime()) < flightsToMid.getFlightTime()) {
+										ArrayList<Flight> path = new ArrayList<Flight>();
+										path.add(flightsToStart);
+						                path.add(flightsToMid);
+						                path.add(flightsToDest);
+						                pathSet.add(path);
+									}
+								}
 						    }
 						}
 					}

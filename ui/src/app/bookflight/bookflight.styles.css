@@ -14,8 +14,26 @@ holder{
 }
 
 .flights{
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.searchholder{
+    display: flex;
+    flex-direction: row;
+}
+
+.searchbuttons{
+    padding-left: 10px;
+}
+
+.search{
+    padding-top: 10px;
+}
+
+.reset{
+    padding-top: 10px;
 }

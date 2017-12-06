@@ -1,0 +1,13 @@
+<div class="card text-center z-depth-2">
+        <div class="card-body">
+            <div class="textdisplay">
+              <div class="mb-0" ng-repeat="f in complexFlightController.flight">
+                origin: {{f.origin}} | destination: {{f.destination}} | leaves: {{(f.offset + 8)%24}}:00 | flight time: {{f.flightTime}} hour(s)
+              </div>
+            </div>
+            <div class="flightbuttons">
+                <button class="btn-default" ng-click="complexFlightController.clickView()">View</button>
+                <button class="btn-primary" ng-click="complexFlightController.clickBook()">Book</button>
+            </div>
+        </div>
+</div>

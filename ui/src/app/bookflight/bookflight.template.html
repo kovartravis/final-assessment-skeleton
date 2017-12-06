@@ -1,10 +1,27 @@
 <flight-map></flight-map>
 <div class="holder">
-    <div class="flights">
-        <div class="list-group col-md-12" style="background-color: white">
+    <div class="flights" ng-switch="bookflight.showAll">
+        <div class="list-group col-md-12"  ng-switch-when="all" style="background-color: white">
             <flight class="list-group-item" style="background-color:indianred" ng-repeat="f in bookflight.allflights track by $index" flight="f"></flight>
         </div>
+        <div class="list-group col-md-12" ng-switch-when="simplesearch" style="background-color: white">
+                <flight class="list-group-item" style="background-color:indianred" ng-repeat="f in bookflight.searchresults track by $index" flight="f"></flight>
+        </div>
+        <div class="list-group col-md-12" ng-switch-when="complexsearch" style="background-color: white">
+                <complex-flight class="list-group-item" style="background-color:indianred" ng-repeat="f in bookflight.searchresults track by $index" flight="f"></complex-flight>
+        </div>
+        <div ng-if="bookflight.searchresults.length === 0 && (bookflight.showAll === 'simplesearch' || bookflight.showAll === 'complexsearch')">
+            <p>nothing found!</p>
+        </div>
     </div>
-    <div>
+    <div class="searchholder">
+        <div class="search">
+            <div class="origin"><input type="text" class="form-control" placeholder="Search by Origin" ng-model="bookflight.origin"></div>
+                <div class="destination"><input type="text" class="form-control" placeholder="Search by Destination" ng-model="bookflight.destination"></div>
+            </div>
+                <div class="searchbuttons">
+                    <div class="search"><button class="btn-primary" ng-click="bookflight.search()">Search</button></div>
+                    <div class="reset"><button class="btn-default" ng-click="bookflight.reset()">Reset</button></div>
+                </div>
     </div>
 </div>

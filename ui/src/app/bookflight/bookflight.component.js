@@ -36,7 +36,7 @@ const controller = class BookFlightComponent{
                     this.updateSearchResults(result)
                 })
             }
-        }, 5000)
+        }, 1000)
         $log.log("hello from book flight component!")
     }
 

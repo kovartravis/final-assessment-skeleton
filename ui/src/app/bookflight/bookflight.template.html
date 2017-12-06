@@ -15,13 +15,22 @@
         </div>
     </div>
     <div class="searchholder">
-        <div class="search">
-            <div class="origin"><input type="text" class="form-control" placeholder="Filter by Origin" ng-model="bookflight.origin"></div>
-                <div class="destination"><input type="text" class="form-control" placeholder="Filter by Destination" ng-model="bookflight.destination"></div>
+        <h5 class="filter">Filter Origin:</h5>
+        <select class="selector" ng-model="bookflight.origin">
+            <option value="MEMPHIS">Memphis</option>
+            <option value="NASHVILLE">Nashville</option>
+            <option value="KNOXVILLE">Knoxville</option>
+            <option value="CHATTANOOGA">Chattanooga</option>
+        </select>
+        <h5 class="filter">Filter Destination:</h5>
+        <select class="selector" ng-model="bookflight.destination">
+            <option value="MEMPHIS">Memphis</option>
+            <option value="NASHVILLE">Nashville</option>
+            <option value="KNOXVILLE">Knoxville</option>
+            <option value="CHATTANOOGA">Chattanooga</option>
+        </select>
+            <div class="searchbuttons">
+                <div class="reset"><button class="btn-default" ng-click="bookflight.reset()">Reset</button></div>
             </div>
-                <div class="searchbuttons">
-                    <!-- <div class="search"><button class="btn-primary" ng-click="bookflight.search()">Search</button></div> -->
-                    <div class="reset"><button class="btn-default" ng-click="bookflight.reset()">Reset</button></div>
-                </div>
     </div>
 </div>

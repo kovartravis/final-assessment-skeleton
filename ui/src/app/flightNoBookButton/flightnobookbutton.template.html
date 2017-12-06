@@ -1,8 +1,8 @@
 <div class="card text-center z-depth-2">
         <div class="card-body">
             <div class="textdisplay">
-              <div class="mb-0" ng-repeat="f in flightNoBookButtonController.flight">
-                origin: {{f.origin}} | destination: {{f.destination}} | leaves: {{(f.offset + 8)%24}}:00 | flight time: {{f.flightTime}} hour(s)
+              <div class="mb-0" ng-repeat="f in flightNoBookButtonController.flight track by $index">
+                origin: {{f.origin}} | destination: {{f.destination}} | leaves: {{flightNoBookButtonController.leaves[$index]}} | flight time: {{f.flightTime}} hour(s)
               </div>
             </div>
             <div class="flightbuttons">

@@ -15,8 +15,11 @@ const controller = class FlightController {
             console.log(this.class)
         }
         this.leaves = this.flight.offset + 8
-        if(this.leaves > 24){
-            this.leaves = this.leaves - 24
+        if(this.leaves > 12){
+            this.leaves = this.leaves - 12
+            this.leaves += 'pm' 
+        }else{
+            this.leaves += 'am'
         }
     }
     $log.log('FlightController is a go.')

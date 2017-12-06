@@ -14,6 +14,19 @@ const controller = class ComplexFlightController {
           this.class = 'btn-danger disabled'
           console.log(this.class)
       }
+
+      this.leaves = []
+      let arr = Array.from(this.flight)
+      for(let i = 0; i < arr.length; i++){
+        let l = arr[i].offset + 8
+        if(l > 12){
+          l = l - 12
+          l += 'pm' 
+        }else{
+          l += 'am'
+        }
+        this.leaves.push(l)
+      }
     }
     $log.log('ComplexFlightController is a go.')
   }

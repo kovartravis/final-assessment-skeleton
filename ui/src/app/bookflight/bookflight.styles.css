@@ -1,3 +1,5 @@
+@import "~bootstrap/less/bootstrap";
+
 holder{
     margin: 0 auto;
     display: flex;
@@ -24,14 +26,25 @@ holder{
 .searchholder{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.filter{
+    padding: 10px;
+    margin-left:5px;
+    margin-right:5px;
+    border-radius: 5px;
+    background-color: lightseagreen;
+}
+
+.selector{
+    border-radius: 5px;
 }
 
 .searchbuttons{
     padding-left: 10px;
-}
-
-.search{
-    padding-top: 10px;
 }
 
 .reset{

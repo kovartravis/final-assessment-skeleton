@@ -3,12 +3,11 @@ package com.cooksys.mappers;
 import org.mapstruct.Mapper;
 
 import com.cooksys.entity.Booking;
-import com.cooksys.pojo.Flight;
+import com.cooksys.pojo.BookingDTO;
 
 @Mapper(componentModel = "spring")
 public interface FlightMapper {
 	
-	Flight bookingToFlight(Booking booking);
-	Booking flightToBooking(Flight flight);
-
+    BookingDTO bookingToDto(Booking booking);
+    
 }

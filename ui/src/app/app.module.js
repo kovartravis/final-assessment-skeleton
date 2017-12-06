@@ -14,6 +14,7 @@ import mapLocations from './map/map.locations'
 import mapComponent from './map/map.component.js'
 import mapService from './map/map.service'
 import {complexFlightComponent} from './complexflight/complexflight.component.js'
+import {flightNoBookButtonComponent} from './flightNoBookButton/flightnobookbutton.component.js'
 
 export default ng
   .module('flight', ['ui.router', 'ngCookies','ngMap'])
@@ -31,6 +32,7 @@ export default ng
   .component('loggedIn', loggedInComponent)
   .component('flight', flightComponent)
   .component('complexFlight', complexFlightComponent)
+  .component('flightNoBookButton', flightNoBookButtonComponent)
   .config(config)
   .name
 

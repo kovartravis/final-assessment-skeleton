@@ -37,8 +37,13 @@ export class FlightService{
             flights,
             login: this.service.user
         }
-        console.log(booking)
         return this.http.post(this.apiUrl + '/flights/booking', booking).then(result => {
+            return Promise.resolve(result.data)
+        })
+    }
+
+    getBookings(){
+        return this.http.get(this.apiUrl + '/flights/booking/passenger/' + this.service.user.username).then(result => {
             return Promise.resolve(result.data)
         })
     }

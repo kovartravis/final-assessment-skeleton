@@ -21,7 +21,14 @@
   export const viewBookingState = {
     name: 'viewBookingPage',
     url: '/viewbooking',
-    component: 'viewBooking'
+    component: 'viewBooking',
+    resolve: {
+      bookings: function(flightService){
+        'ngInject'
+        console.log('hello from resolve')
+        return flightService.getBookings()
+      }
+    }
   }
 
   export const loggedInState = {

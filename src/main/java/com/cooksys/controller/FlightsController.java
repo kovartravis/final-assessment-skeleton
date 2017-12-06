@@ -19,6 +19,7 @@ import com.cooksys.entity.Booking;
 import com.cooksys.exceptions.CredentialsDoNotMatchException;
 import com.cooksys.exceptions.PassengerDoesNotExistException;
 import com.cooksys.exceptions.SomethingIsNullAndShouldNotBeException;
+import com.cooksys.pojo.BookingDTO;
 import com.cooksys.pojo.Flight;
 import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
@@ -46,7 +47,7 @@ public class FlightsController {
 	}
 	
 	@GetMapping("/booking/passenger/{username}")
-	public List<Booking> getBookingsByUsername(@PathVariable String username){
+	public List<BookingDTO> getBookingsByUsername(@PathVariable String username){
 		return flightService.getBookingsByUsername(username);
 	}
 	

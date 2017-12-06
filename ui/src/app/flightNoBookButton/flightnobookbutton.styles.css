@@ -1,0 +1,20 @@
+.card-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flightbuttons{
+    padding-left: 5px;
+}
+
+.textdisplay{
+    display: flex;
+    flex-direction: column;
+}
+
+.mb-0{
+    color: white;
+    float: left;
+}

@@ -17,6 +17,12 @@ const controller = class AppController {
     })
   }
 
+  gotoview(){
+    this.state.transitionTo('viewBookingPage').then(result => {
+      location.reload()
+    })
+  }
+
 }
 
 export const appComponent =  {

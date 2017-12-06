@@ -1,1 +1,30 @@
-<h1>View your bookings!</h1>
+<flight-map></flight-map>
+<div class="info">
+    <div class="scrollable">
+      <div class="bookings">
+        <div class="list-group col-md-12" style="background-color: white">
+          <flight-no-book-button class="list-group-item viewing" style="background-color:indianred" ng-repeat="f in viewbooking.bookings track by $index" flight="f.flights"></flight-no-book-button>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Total flights</th>
+                    <th>Total time in the air</th>
+                    <th>Total cities visited</th>
+                    <th>Total layovers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>{{viewbooking.layovers}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

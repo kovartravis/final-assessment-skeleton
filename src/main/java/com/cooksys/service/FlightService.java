@@ -13,6 +13,8 @@ import com.cooksys.entity.Booking;
 import com.cooksys.exceptions.CredentialsDoNotMatchException;
 import com.cooksys.exceptions.PassengerDoesNotExistException;
 import com.cooksys.exceptions.SomethingIsNullAndShouldNotBeException;
+import com.cooksys.mappers.FlightMapper;
+import com.cooksys.pojo.BookingDTO;
 import com.cooksys.pojo.Flight;
 import com.cooksys.repository.BookingRepository;
 import com.cooksys.repository.FlightRepository;
@@ -31,6 +33,9 @@ public class FlightService {
 
 	@Autowired
 	FlightRepository flightRepo;
+	
+	@Autowired
+	FlightMapper mapper;
 
 	private ArrayList<Flight> flightList = new ArrayList<>();
 
@@ -62,9 +67,9 @@ public class FlightService {
 		return bookingRepo.findById(id);
 	}
 
-	public List<Booking> getBookingsByUsername(String username) {
+	public List<BookingDTO> getBookingsByUsername(String username) {
 		System.out.println(username);
-		return bookingRepo.findBookingsByLoginUsername(username);
+		return bookingRepo.findBookingsByLoginUsername(username).stream().map(mapper::bookingToDto).collect(Collectors.toList());
 	}
 
 	public ArrayList<ArrayList<Flight>> getPathsFromTo(String origin, String destination){

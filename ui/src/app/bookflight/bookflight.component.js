@@ -12,31 +12,26 @@ const controller = class BookFlightComponent{
         this.allflights = []
         this.noResults = false
         $interval( () =>{
-            this.flightService.getAllFlights().then(result =>{
-                this.updateFlights(result)
-            })
-
-            if(this.origin === undefined && this.destination !== undefined){
-                if(this.showAll === 'complexsearch'){
-                    this.showAll = 'simplesearch'
-                }
+            if(!this.origin && !this.destination){
+                this.showAll = 'all'
+                this.flightService.getAllFlights().then(result =>{
+                    this.updateFlights(result)
+                })
+            }
+            if(!this.origin && this.destination){
+                this.showAll = 'simplesearch'
                 this.flightService.getFlightsTo(this.destination).then(result => {
                     this.updateSearchResults(result)
                 })
             }
-            if(this.destination === undefined && this.origin !== undefined){
-                if(this.showAll === 'complexsearch'){
-                    this.showAll = 'simplesearch'
-                }
+            if(!this.destination && this.origin){
+                this.showAll = 'simplesearch'
                 this.flightService.getFlightsFrom(this.origin).then(result => {
                     this.updateSearchResults(result)
                 })
             }
-            if(this.origin !== undefined && this.destination !== undefined)
-            {
-                if(this.showAll === 'simplesearch'){
-                    this.showAll = 'complexsearch'
-                }
+            if(this.origin && this.destination){
+                this.showAll = 'complexsearch'
                 this.flightService.getFlightsFromTo(this.origin, this.destination).then(result =>{
                     this.updateSearchResults(result)
                 })
@@ -54,9 +49,9 @@ const controller = class BookFlightComponent{
     }
 
 
-    search(){
-        this.showAll = 'simplesearch'
-    }
+    // search(){
+    //     this.showAll = 'simplesearch'
+    // }
 
     reset(){
         this.showAll = 'all'

@@ -5,7 +5,8 @@
             </p>
             <div class="flightbuttons">
                 <button class="btn-default" ng-click="flightController.clickView()">View</button>
-                <button class="btn-primary" ng-click="flightController.clickBook()">Book</button>
+                <button ng-class="flightController.class" ng-click="flightController.clickBook()"
+                        ng-disabled="flightController.userService.user.username === 'Login'">Book</button>
             </div>
         </div>
 </div>

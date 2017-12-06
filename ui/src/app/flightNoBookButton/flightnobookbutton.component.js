@@ -7,7 +7,7 @@ const controller = class FlightNoBookButtonController {
     'ngInject'
     this.map = $map
     this.service = flightService
-    $log.log('FlightController is a go.')
+    $log.log('FlightController no button is a go.')
   }
 
   clickView(){

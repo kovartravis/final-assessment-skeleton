@@ -3,11 +3,17 @@ import templateUrl from './flight.template.html'
 
 const controller = class FlightController {
 
-  constructor ($log, $map, flightService) {
+  constructor ($log, $map, flightService, userService) {
     'ngInject'
     this.service = flightService
+    this.userService = userService
     this.map = $map
     this.$onInit = () => {
+        this.class = 'btn-primary'
+        if(userService.user.username === 'Login'){
+            this.class = 'btn-danger disabled'
+            console.log(this.class)
+        }
         this.leaves = this.flight.offset + 8
         if(this.leaves > 24){
             this.leaves = this.leaves - 24

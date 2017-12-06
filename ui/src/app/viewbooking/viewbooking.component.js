@@ -7,10 +7,21 @@ const controller = class ViewBookingComponent{
         'ngInject'
         this.$onInit = () => {
             let arr = Array.from(this.bookings)
-            console.log(arr)
-            this.layovers = 0
             this.totalflights = 0
-            arr.forEach( f => this.layovers += f.flights.length - 1 )
+            this.timeinair = 0
+            this.citiesvisited = []
+            this.layovers = 0
+            arr.forEach( flt => {
+                this.totalflights += flt.flights.length
+                flt.flights.forEach( f => {
+                    this.timeinair += f.flightTime
+                    this.citiesvisited.push(f.destination)
+                })
+                this.layovers += flt.flights.length - 1
+            })
+            this.citiesvisitiednorepeat = this.citiesvisited.filter( (city, i) => {
+                return this.citiesvisited.indexOf(city) === i
+            })
         }
         $log.log("hello from view booking component!")
     }

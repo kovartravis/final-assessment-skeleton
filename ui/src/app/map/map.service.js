@@ -48,7 +48,16 @@ class MapService {
   }
 
   viewPaths(origin, destination){
-    this.addPath(this.mapToObject(origin), this.mapToObject(destination), '#CC0099')
+    this.addPath(this.mapToObject(origin), this.mapToObject(destination), this.getRandomColor())
+  }
+
+  getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 
   resetPath(){

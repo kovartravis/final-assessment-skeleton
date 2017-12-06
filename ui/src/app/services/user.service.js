@@ -7,10 +7,14 @@ export class UserService{
         this.log = $log
         this.apiUrl = apiUrl
         this.cookies = $cookies
+        this.viewclass = 'bg-success col-md-2'
         this.user = {username: 'Login'}
         if(this.cookies.getObject('user') !== undefined){
             this.user = JSON.parse(this.cookies.get('user'))
         }
+        if(this.user.username === 'Login'){
+            this.viewclass = 'bg-danger col-md-2'
+          }
         $log.log("hello from user service")
     }
 
@@ -18,6 +22,7 @@ export class UserService{
         this.userHolder = {username, password}
         return this.http.post(this.apiUrl + '/passengers/validate', this.userHolder).then(result => {
             this.user = this.userHolder
+            this.viewclass = 'bg-success col-md-2'
             this.cookies.putObject('user', this.user)
             return Promise.resolve(result.data)
         }).catch(error => {
@@ -29,6 +34,7 @@ export class UserService{
         this.userHolder = {username, password}
         return this.http.post(this.apiUrl + '/passengers/new', this.userHolder).then(result =>{
             this.user = this.userHolder
+            this.viewclass = 'bg-success col-md-2'
             this.cookies.putObject('user', this.user)
             return Promise.resolve(result.data)
         }).catch(error=>{
@@ -38,6 +44,7 @@ export class UserService{
 
     logOut(){
         this.user = {username: 'Login'}
+        this.viewclass = 'bg-danger col-md-2'
         this.cookies.putObject('user', this.user)
     }
 

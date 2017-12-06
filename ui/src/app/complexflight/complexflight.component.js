@@ -3,11 +3,19 @@ import templateUrl from './complexflight.template.html'
 
 const controller = class ComplexFlightController {
 
-  constructor ($log, $map, flightService) {
+  constructor ($log, $map, flightService, userService) {
     'ngInject'
     this.map = $map
+    this.userService = userService
     this.service = flightService
-    $log.log('FlightController is a go.')
+    this.$onInit = () => {
+      this.class = 'btn-primary'
+      if(userService.user.username === 'Login'){
+          this.class = 'btn-danger disabled'
+          console.log(this.class)
+      }
+    }
+    $log.log('ComplexFlightController is a go.')
   }
 
   clickView(){

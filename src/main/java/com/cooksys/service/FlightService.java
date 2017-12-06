@@ -50,7 +50,7 @@ public class FlightService {
 		flightList = generator.generateNewFlightList();
 		
 //		flightList.add(new Flight("MEMPHIS", "NASHVILLE", 1, 2));
-//		flightList.add(new Flight("MEMPHIS", "KNOXVILLE", 2, 2));
+//		flightList.add(new Flight("NASHVILLE", "MEMPHIS", 2, 7));
 //		flightList.add(new Flight("KNOXVILLE", "CHATTANOOGA", 1, 5));
 //		flightList.add(new Flight("KNOXVILLE", "NASHVILLE", 4, 2));
 //		flightList.add(new Flight("CHATTANOOGA", "NASHVILLE", 1, 3));

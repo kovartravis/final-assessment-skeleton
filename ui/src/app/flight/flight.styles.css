@@ -9,6 +9,11 @@
     padding-left: 5px;
 }
 
+.btn-danger{
+    color: gray;
+    text-decoration: line-through;
+}
+
 .mb-0{
     color: white;
 }

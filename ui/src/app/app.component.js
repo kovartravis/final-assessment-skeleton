@@ -18,9 +18,11 @@ const controller = class AppController {
   }
 
   gotoview(){
-    this.state.transitionTo('viewBookingPage').then(result => {
-      location.reload()
-    })
+    if(this.service.user.username !== 'Login'){
+      this.state.transitionTo('viewBookingPage').then(result => {
+        location.reload()
+      })
+    }
   }
 
 }

@@ -1,1 +1,11 @@
 @import "~bootstrap/less/bootstrap";
+
+.bg-danger{
+    color: grey;
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
+.bg-success{
+    cursor: pointer;
+}

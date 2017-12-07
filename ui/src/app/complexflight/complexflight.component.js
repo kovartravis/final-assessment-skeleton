@@ -19,11 +19,13 @@ const controller = class ComplexFlightController {
       let arr = Array.from(this.flight)
       for(let i = 0; i < arr.length; i++){
         let l = arr[i].offset + 8
-        if(l > 12){
+        if(l === 12){
+          l = l + 'pm'
+        }else if(l > 12){
           l = l - 12
-          l += 'pm' 
+          l = l + 'pm'
         }else{
-          l += 'am'
+          l = l + 'am'
         }
         this.leaves.push(l)
       }

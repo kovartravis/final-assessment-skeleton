@@ -14,13 +14,17 @@ const controller = class FlightController {
             this.class = 'btn-danger disabled'
             console.log(this.class)
         }
-        this.leaves = this.flight.offset + 8
-        if(this.leaves > 12){
-            this.leaves = this.leaves - 12
-            this.leaves += 'pm' 
+        let l = this.flight.offset + 8
+        if(l === 12){
+            l = l + 'pm'
+        }else if(l > 12){
+            l = l - 12
+            l = l + 'pm'
         }else{
-            this.leaves += 'am'
+            l = l + 'am'
         }
+        this.leaves = l
+
     }
     $log.log('FlightController is a go.')
   }
